@@ -15,7 +15,8 @@
   },
   "require": {
     "monolog/monolog": "^2.5",
-    "php-di/php-di": "^6.4"
+    "php-di/php-di": "^6.4",
+    "wptrt/admin-notices": "^1.0"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
