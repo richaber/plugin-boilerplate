@@ -16,13 +16,16 @@
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
+    "phpstan/extension-installer": "^1.1",
+    "szepeviktor/phpstan-wordpress": "^1.0",
     "wp-coding-standards/wpcs": "*"
   },
   "config": {
     "sort-packages": true,
     "optimize-autoloader": true,
     "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "phpstan/extension-installer": true
     }
   },
   "extra": {
