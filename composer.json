@@ -43,9 +43,11 @@
     "phpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcs.xml.dist --extensions=php .",
     "phpcbf": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=phpcs.xml.dist --extensions=php .",
     "phpstan": "@php ./vendor/phpstan/phpstan/phpstan analyse --memory-limit 1G",
+    "psalm": "@php ./vendor/vimeo/psalm/psalm",
     "test": [
       "@phpcs",
-      "@phpstan"
+      "@phpstan",
+      "@psalm"
     ]
   }
 }
