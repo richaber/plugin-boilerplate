@@ -46,6 +46,29 @@
     "wordpress-install-dir": "vendor/roots/wordpress"
   },
   "scripts": {
+    "prefix-dependencies": [
+      "@composer --working-dir=php-scoper install",
+      "@php ./php-scoper/vendor/bin/php-scoper add --output-dir=./dependencies --force --quiet",
+      "@autoload-inc",
+      "@autoload-dependencies",
+      "@composer dump-autoload --no-dev",
+      "cp vendor/composer/autoload_files.php dependencies/vendor/",
+      "@composer dump-autoload"
+    ],
+    "autoload-inc": [
+      "echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > inc/composer.json",
+      "@composer --working-dir=inc dump-autoload --classmap-authoritative --no-interaction",
+      "cp inc/vendor/composer/autoload_classmap.php inc/",
+      "rm -rf inc/vendor && rm inc/composer.json",
+      "mkdir -p inc/vendor/composer && mv inc/autoload_classmap.php inc/vendor/composer/"
+    ],
+    "autoload-dependencies": [
+      "echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > dependencies/composer.json",
+      "@composer --working-dir=dependencies dump-autoload --classmap-authoritative --no-interaction",
+      "cp dependencies/vendor/composer/autoload_classmap.php dependencies/",
+      "rm -rf dependencies/vendor && rm dependencies/composer.json",
+      "mkdir -p dependencies/vendor/composer && mv dependencies/autoload_classmap.php dependencies/vendor/composer/"
+    ],
     "phpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcs.xml.dist --extensions=php .",
     "phpcbf": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=phpcs.xml.dist --extensions=php .",
     "phpstan": "@php ./vendor/phpstan/phpstan/phpstan analyse --memory-limit 1G",
