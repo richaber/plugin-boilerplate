@@ -46,6 +46,12 @@
     "wordpress-install-dir": "vendor/roots/wordpress"
   },
   "scripts": {
+    "post-install-cmd": [
+      "@prefix-dependencies"
+    ],
+    "post-update-cmd": [
+      "@prefix-dependencies"
+    ],
     "prefix-dependencies": [
       "@composer --working-dir=php-scoper install",
       "@php ./php-scoper/vendor/bin/php-scoper add --output-dir=./dependencies --force --quiet",
