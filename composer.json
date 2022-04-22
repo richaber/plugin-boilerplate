@@ -16,6 +16,7 @@
   "require": {
     "monolog/monolog": "^2.5",
     "php-di/php-di": "^6.4",
+    "typisttech/wp-contained-hook": "^0.3.1",
     "wptrt/admin-notices": "^1.0"
   },
   "require-dev": {
