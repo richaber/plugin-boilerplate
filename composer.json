@@ -15,9 +15,12 @@
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "php-stubs/wordpress-stubs": "^5.9",
+    "php-stubs/wp-cli-stubs": "^2.6",
     "phpcompatibility/phpcompatibility-wp": "*",
     "phpstan/extension-installer": "^1.1",
     "roave/security-advisories": "dev-latest",
+    "roots/wordpress": ">=4.7",
     "szepeviktor/phpstan-wordpress": "^1.0",
     "vimeo/psalm": "^4.22",
     "wp-coding-standards/wpcs": "*",
@@ -28,11 +31,13 @@
     "optimize-autoloader": true,
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "phpstan/extension-installer": true
+      "phpstan/extension-installer": true,
+      "roots/wordpress-core-installer": true
     }
   },
   "extra": {
-    "installer-name": "plugin-boilerplate"
+    "installer-name": "plugin-boilerplate",
+    "wordpress-install-dir": "vendor/roots/wordpress"
   },
   "scripts": {
     "phpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcs.xml.dist --extensions=php .",
