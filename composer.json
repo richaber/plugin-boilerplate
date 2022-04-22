@@ -13,6 +13,10 @@
       "RichAber\\PluginBoilerplate\\": "inc"
     }
   },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
   "extra": {
     "installer-name": "plugin-boilerplate"
   }
