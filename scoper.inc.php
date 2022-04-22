@@ -25,7 +25,19 @@ return [
 					  'vendor-bin',
 				  ]
 			  )
+			  ->path( '#^monolog/#' )
+			  ->path( '#^opis/#' )
+			  ->path( '#^php-di/#' )
+			  ->path( '#^psr/#' )
+			  ->path( '#^segmentio/#' )
+			  ->path( '#^typisttech/#' )
+			  ->path( '#^wptrt/#' )
 			  ->in( 'vendor' ),
+	],
+	// list<string>
+	'exclude-files'           => [
+		'vendor/composer/InstalledVersions.php',
+		'vendor/php-di/php-di/src/Compiler/Template.php',
 	],
 	'expose-global-constants' => true,
 	'expose-global-classes'   => true,
