@@ -17,6 +17,7 @@
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "phpcompatibility/phpcompatibility-wp": "*",
     "phpstan/extension-installer": "^1.1",
+    "roave/security-advisories": "dev-latest",
     "szepeviktor/phpstan-wordpress": "^1.0",
     "vimeo/psalm": "^4.22",
     "wp-coding-standards/wpcs": "*",
