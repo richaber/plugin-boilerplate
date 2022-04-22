@@ -1,4 +1,9 @@
 {
   "name": "richaber/plugin-boilerplate",
-  "license": "GPL-2.0-or-later"
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "plugin"
+  ],
+  "type": "wordpress-plugin"
 }
