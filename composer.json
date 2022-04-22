@@ -8,6 +8,11 @@
   "type": "wordpress-plugin",
   "minimum-stability": "dev",
   "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "RichAber\\PluginBoilerplate\\": "inc"
+    }
+  },
   "extra": {
     "installer-name": "plugin-boilerplate"
   }
