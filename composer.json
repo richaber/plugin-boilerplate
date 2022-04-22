@@ -13,6 +13,9 @@
       "RichAber\\PluginBoilerplate\\": "inc"
     }
   },
+  "require": {
+    "php-di/php-di": "^6.4"
+  },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "*",
     "php-stubs/wordpress-stubs": "^5.9",
