@@ -5,5 +5,8 @@
     "WordPress",
     "plugin"
   ],
-  "type": "wordpress-plugin"
+  "type": "wordpress-plugin",
+  "extra": {
+    "installer-name": "plugin-boilerplate"
+  }
 }
