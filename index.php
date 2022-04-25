@@ -84,3 +84,5 @@ add_action(
 );
 
 autoload_classes();
+
+autoload_files();
