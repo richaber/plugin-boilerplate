@@ -8,6 +8,9 @@
 
 namespace RichAber\PluginBoilerplate;
 
+use RichAber\PluginBoilerplate\Container\ContainerFactory;
+use RichAber\PluginBoilerplateDependencies\Psr\Container\ContainerInterface;
+
 /**
  * Class Plugin
  *
@@ -16,12 +19,24 @@ namespace RichAber\PluginBoilerplate;
  * @since 0.1.0-dev
  */
 class Plugin {
+
+	/**
+	 * Dependency Injection Container.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @var ContainerInterface
+	 */
+	protected $container;
+
 	/**
 	 * Plugin constructor.
 	 *
 	 * @since 0.1.0-dev
 	 */
-	public function __construct() {}
+	public function __construct() {
+		$this->container = ContainerFactory::create();
+	}
 
 	/**
 	 * Plugin activation routines.
@@ -49,4 +64,15 @@ class Plugin {
 	 * @return void
 	 */
 	public function run(): void {}
+
+	/**
+	 * Get the plugin's dependency injection container.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @return ContainerInterface
+	 */
+	public function get_container(): ContainerInterface {
+		return $this->container;
+	}
 }
