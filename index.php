@@ -72,3 +72,8 @@ define(
 		PLUGINBOILERPLATE_FILE
 	)
 );
+
+/**
+ * Require critical path functions.
+ */
+require_once PLUGINBOILERPLATE_DIR . 'inc/functions.php';
