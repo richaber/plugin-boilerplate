@@ -77,3 +77,8 @@ define(
  * Require critical path functions.
  */
 require_once PLUGINBOILERPLATE_DIR . 'inc/functions.php';
+
+add_action(
+	'init',
+	__NAMESPACE__ . '\load_textdomain'
+);
