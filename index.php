@@ -82,3 +82,5 @@ add_action(
 	'init',
 	__NAMESPACE__ . '\load_textdomain'
 );
+
+autoload_classes();
