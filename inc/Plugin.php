@@ -10,6 +10,7 @@ namespace RichAber\PluginBoilerplate;
 
 use RichAber\PluginBoilerplate\Container\ContainerFactory;
 use RichAber\PluginBoilerplateDependencies\Psr\Container\ContainerInterface;
+use RichAber\PluginBoilerplateDependencies\TypistTech\WPContainedHook\Loader;
 
 /**
  * Class Plugin
@@ -30,12 +31,24 @@ class Plugin {
 	protected $container;
 
 	/**
+	 * Hook Loader.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @var Loader
+	 */
+	protected $loader;
+
+	/**
 	 * Plugin constructor.
 	 *
 	 * @since 0.1.0-dev
 	 */
 	public function __construct() {
 		$this->container = ContainerFactory::create();
+		$this->loader    = new Loader(
+			$this->container
+		);
 	}
 
 	/**
@@ -74,5 +87,16 @@ class Plugin {
 	 */
 	public function get_container(): ContainerInterface {
 		return $this->container;
+	}
+
+	/**
+	 * Get the plugin's hook loader.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @return Loader
+	 */
+	public function get_loader(): Loader {
+		return $this->loader;
 	}
 }
