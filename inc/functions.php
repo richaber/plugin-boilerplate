@@ -57,3 +57,18 @@ function autoload_classes(): void {
 		true
 	);
 }
+
+/**
+ * Load dependency function files.
+ *
+ * @since 0.1.0-dev
+ *
+ * @return void
+ */
+function autoload_files(): void {
+	$files = require PLUGINBOILERPLATE_DIR . 'dependencies/vendor/autoload_files.php';
+
+	foreach ( $files as $file_identifier => $file ) {
+		require_once $file;
+	}
+}
