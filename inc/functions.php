@@ -9,3 +9,24 @@
  */
 
 namespace RichAber\PluginBoilerplate;
+
+/**
+ * Internationalization (I18n).
+ *
+ * Sets up internationalization/localization functionality.
+ *
+ * @since 0.1.0-dev
+ *
+ * @return void
+ */
+function load_textdomain(): void {
+	load_plugin_textdomain(
+		'plugin-boilerplate',
+		false,
+		dirname(
+			plugin_basename(
+				PLUGINBOILERPLATE_FILE
+			)
+		) . '/languages/'
+	);
+}
