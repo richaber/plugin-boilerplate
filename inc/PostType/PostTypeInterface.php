@@ -48,5 +48,5 @@ interface PostTypeInterface extends HookableInterface {
 	 *
 	 * @return void
 	 */
-	public function init(): void;
+	public function register(): void;
 }

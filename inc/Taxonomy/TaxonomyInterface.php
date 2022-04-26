@@ -45,7 +45,7 @@ interface TaxonomyInterface extends HookableInterface {
 	 *
 	 * @return void
 	 */
-	public function init(): void;
+	public function register(): void;
 
 	/**
 	 * Get the array of object types with which this taxonomy should be associated.
