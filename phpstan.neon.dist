@@ -1,0 +1,24 @@
+parameters:
+        level: 8
+        scanFiles:
+        scanDirectories:
+            - dependencies/
+            - vendor/
+        paths:
+            - index.php
+            - inc/
+        bootstrapFiles:
+            - index.php
+        excludePaths:
+            - inc/Container/CompiledContainer.php
+            - inc/vendor/composer/autoload_classmap.php
+        dynamicConstantNames:
+        ignoreErrors:
+            # Uses func_get_args()
+            - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
+            # Defined in wp-config.php
+            - '#^Constant WP_LANG_DIR not found\.$#'
+            - '#^Constant WP_CLI not found\.$#'
+            - '#^Constant WP_CONTENT_DIR not found\.$#'
+            - '#^Property RichAber\\PluginBoilerplate\\Admin\\Notice\:\:\$allowed_html type has no value type specified in iterable type array\.$#'
+        reportUnmatchedIgnoredErrors: false

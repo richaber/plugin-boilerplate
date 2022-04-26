@@ -1,0 +1,88 @@
+{
+  "name": "richaber/plugin-boilerplate",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "plugin"
+  ],
+  "type": "wordpress-plugin",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "RichAber\\PluginBoilerplate\\": "inc"
+    }
+  },
+  "require": {
+    "monolog/monolog": "^2.5",
+    "php-di/php-di": "^6.4",
+    "typisttech/wp-contained-hook": "^0.3.1",
+    "wptrt/admin-notices": "^1.0"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "php-stubs/wordpress-stubs": "^5.9",
+    "php-stubs/wp-cli-stubs": "^2.6",
+    "phpcompatibility/phpcompatibility-wp": "*",
+    "phpstan/extension-installer": "^1.1",
+    "roave/security-advisories": "dev-latest",
+    "roots/wordpress": ">=4.7",
+    "szepeviktor/phpstan-wordpress": "^1.0",
+    "vimeo/psalm": "^4.22",
+    "wp-coding-standards/wpcs": "*",
+    "yoast/phpunit-polyfills": "^1.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "phpstan/extension-installer": true,
+      "roots/wordpress-core-installer": true
+    }
+  },
+  "extra": {
+    "installer-name": "plugin-boilerplate",
+    "wordpress-install-dir": "vendor/roots/wordpress"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@prefix-dependencies"
+    ],
+    "post-update-cmd": [
+      "@prefix-dependencies"
+    ],
+    "prefix-dependencies": [
+      "@composer --working-dir=php-scoper install",
+      "@php ./php-scoper/vendor/bin/php-scoper add --output-dir=./dependencies --force --quiet",
+      "@autoload-inc",
+      "@autoload-dependencies",
+      "@composer dump-autoload --no-dev",
+      "cp vendor/composer/autoload_files.php dependencies/vendor/",
+      "@composer dump-autoload"
+    ],
+    "autoload-inc": [
+      "echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > inc/composer.json",
+      "@composer --working-dir=inc dump-autoload --classmap-authoritative --no-interaction",
+      "cp inc/vendor/composer/autoload_classmap.php inc/",
+      "rm -rf inc/vendor && rm inc/composer.json",
+      "mkdir -p inc/vendor/composer && mv inc/autoload_classmap.php inc/vendor/composer/"
+    ],
+    "autoload-dependencies": [
+      "echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > dependencies/composer.json",
+      "@composer --working-dir=dependencies dump-autoload --classmap-authoritative --no-interaction",
+      "cp dependencies/vendor/composer/autoload_classmap.php dependencies/",
+      "rm -rf dependencies/vendor && rm dependencies/composer.json",
+      "mkdir -p dependencies/vendor/composer && mv dependencies/autoload_classmap.php dependencies/vendor/composer/"
+    ],
+    "phpcs": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=phpcs.xml.dist --extensions=php .",
+    "phpcbf": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=phpcs.xml.dist --extensions=php .",
+    "phpstan": "@php ./vendor/phpstan/phpstan/phpstan analyse --memory-limit 1G",
+    "psalm": "@php ./vendor/vimeo/psalm/psalm",
+    "test": [
+      "@phpcs",
+      "@phpstan",
+      "@psalm"
+    ]
+  }
+}
