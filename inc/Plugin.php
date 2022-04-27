@@ -20,7 +20,6 @@ use RichAber\PluginBoilerplateDependencies\TypistTech\WPContainedHook\Loader;
  * @since 0.1.0-dev
  */
 class Plugin {
-
 	/**
 	 * Dependency Injection Container.
 	 *
@@ -38,6 +37,18 @@ class Plugin {
 	 * @var Loader
 	 */
 	protected $loader;
+
+	/**
+	 * Classes that implement the HookableInterface.
+	 *
+	 * This is simply a list of Fully Qualified Class Names (FQCN)
+	 * of classes that have implemented the HookableInterface.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @var string[]
+	 */
+	protected static $hookables = [];
 
 	/**
 	 * Plugin constructor.
@@ -98,5 +109,16 @@ class Plugin {
 	 */
 	public function get_loader(): Loader {
 		return $this->loader;
+	}
+
+	/**
+	 * Get the plugin's hookable classes.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @return string[]
+	 */
+	public function get_hookables(): array {
+		return (array) self::$hookables;
 	}
 }
