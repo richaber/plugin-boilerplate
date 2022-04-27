@@ -12,7 +12,6 @@
 	<projectFiles>
 		<directory name="inc"/>
 		<ignoreFiles>
-            <file name="inc/Container/CompiledContainer.php" />
 			<directory name="inc/vendor/composer/"/>
 		</ignoreFiles>
 	</projectFiles>
