@@ -39,6 +39,10 @@ function load_textdomain(): void {
  * @return void
  */
 function autoload_classes(): void {
+	/**
+	 * We won't be using the typical Composer generated autoloader,
+	 * as we have a build process using PHP-Scoper to prefix vendor packages.
+	 */
 	$class_map = array_merge(
 		include PLUGINBOILERPLATE_DIR . 'inc/vendor/composer/autoload_classmap.php',
 		include PLUGINBOILERPLATE_DIR . 'dependencies/vendor/composer/autoload_classmap.php'
@@ -66,6 +70,11 @@ function autoload_classes(): void {
  * @return void
  */
 function autoload_files(): void {
+	/**
+	 * We won't be using the typical Composer generated autoloader,
+	 * as we have a build process using PHP-Scoper to prefix vendor packages.
+	 * That means we need to load the vendor "function files" ourselves.
+	 */
 	$files = require PLUGINBOILERPLATE_DIR . 'dependencies/vendor/autoload_files.php';
 
 	foreach ( $files as $file_identifier => $file ) {
