@@ -60,6 +60,17 @@ function autoload_classes(): void {
 		true,
 		true
 	);
+
+	/**
+	 * During development,
+	 * define PLUGINBOILERPLATE_DEV as true in your wp-config.php file,
+	 * to require the typical Composer generated autoloader,
+	 * so we won't have to generate the inc/autoload_classmap every time we add a class.
+	 * This autoloader will not be used in the "built" production version.
+	 */
+	if ( defined( 'PLUGINBOILERPLATE_DEV' ) && PLUGINBOILERPLATE_DEV && is_readable( PLUGINBOILERPLATE_DIR . 'vendor/autoload.php' ) ) {
+		require_once PLUGINBOILERPLATE_DIR . 'vendor/autoload.php';
+	}
 }
 
 /**
