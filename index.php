@@ -115,3 +115,8 @@ register_deactivation_hook(
 		$pluginboilerplate_plugin->deactivate();
 	}
 );
+
+/**
+ * Register Plugin hooks with WordPress.
+ */
+$pluginboilerplate_plugin->run();
