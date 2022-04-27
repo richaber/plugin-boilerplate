@@ -95,3 +95,23 @@ autoload_files();
  * @var Plugin
  */
 $pluginboilerplate_plugin = PluginFactory::create();
+
+/**
+ * Register activation routines.
+ */
+register_activation_hook(
+	PLUGINBOILERPLATE_FILE,
+	function () use ( $pluginboilerplate_plugin ) {
+		$pluginboilerplate_plugin->activate();
+	}
+);
+
+/**
+ * Register deactivation routines.
+ */
+register_deactivation_hook(
+	PLUGINBOILERPLATE_FILE,
+	function () use ( $pluginboilerplate_plugin ) {
+		$pluginboilerplate_plugin->deactivate();
+	}
+);
