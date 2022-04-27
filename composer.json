@@ -14,6 +14,7 @@
     }
   },
   "require": {
+    "berlindb/core": "^2.0",
     "monolog/monolog": "^2.5",
     "php-di/php-di": "^6.4",
     "typisttech/wp-contained-hook": "^0.3.1",
