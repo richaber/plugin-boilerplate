@@ -86,3 +86,12 @@ add_action(
 autoload_classes();
 
 autoload_files();
+
+/**
+ * Create/get sharable instance of the Plugin.
+ *
+ * We are namespaced in this bootstrap, so global prefixing not required.
+ *
+ * @var Plugin
+ */
+$pluginboilerplate_plugin = PluginFactory::create();
