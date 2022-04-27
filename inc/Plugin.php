@@ -20,7 +20,6 @@ use RichAber\PluginBoilerplateDependencies\TypistTech\WPContainedHook\Loader;
  * @since 0.1.0-dev
  */
 class Plugin {
-
 	/**
 	 * Dependency Injection Container.
 	 *
@@ -40,6 +39,18 @@ class Plugin {
 	protected $loader;
 
 	/**
+	 * Classes that implement the HookableInterface.
+	 *
+	 * This is simply a list of Fully Qualified Class Names (FQCN)
+	 * of classes that have implemented the HookableInterface.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @var string[]
+	 */
+	protected static $hookables = [];
+
+	/**
 	 * Plugin constructor.
 	 *
 	 * @since 0.1.0-dev
@@ -49,6 +60,7 @@ class Plugin {
 		$this->loader    = new Loader(
 			$this->container
 		);
+		$this->add_hooks();
 	}
 
 	/**
@@ -76,7 +88,9 @@ class Plugin {
 	 *
 	 * @return void
 	 */
-	public function run(): void {}
+	public function run(): void {
+		$this->get_loader()->run();
+	}
 
 	/**
 	 * Get the plugin's dependency injection container.
@@ -98,5 +112,39 @@ class Plugin {
 	 */
 	public function get_loader(): Loader {
 		return $this->loader;
+	}
+
+	/**
+	 * Get the plugin's hookable classes.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @return string[]
+	 */
+	public function get_hookables(): array {
+		return (array) self::$hookables;
+	}
+
+	/**
+	 * Add hooks to the loader.
+	 *
+	 * @since 0.1.0-dev
+	 *
+	 * @return void
+	 */
+	protected function add_hooks(): void {
+		/**
+		 * The FQCN of a class that implements the HookableInterface,
+		 * having a get_hooks method,
+		 * which returns an array of HookInterface objects,
+		 * i.e. Action and Filter objects.
+		 *
+		 * @var HookableInterface $hookable
+		 */
+		foreach ( $this->get_hookables() as $hookable ) {
+			$this->get_loader()->add(
+				...$hookable::get_hooks()
+			);
+		}
 	}
 }

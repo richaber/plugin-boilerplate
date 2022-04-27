@@ -86,3 +86,37 @@ add_action(
 autoload_classes();
 
 autoload_files();
+
+/**
+ * Create/get sharable instance of the Plugin.
+ *
+ * We are namespaced in this bootstrap, so global prefixing not required.
+ *
+ * @var Plugin
+ */
+$pluginboilerplate_plugin = PluginFactory::create();
+
+/**
+ * Register activation routines.
+ */
+register_activation_hook(
+	PLUGINBOILERPLATE_FILE,
+	function () use ( $pluginboilerplate_plugin ) {
+		$pluginboilerplate_plugin->activate();
+	}
+);
+
+/**
+ * Register deactivation routines.
+ */
+register_deactivation_hook(
+	PLUGINBOILERPLATE_FILE,
+	function () use ( $pluginboilerplate_plugin ) {
+		$pluginboilerplate_plugin->deactivate();
+	}
+);
+
+/**
+ * Register Plugin hooks with WordPress.
+ */
+$pluginboilerplate_plugin->run();

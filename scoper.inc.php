@@ -25,6 +25,7 @@ return [
 					  'vendor-bin',
 				  ]
 			  )
+			  ->path( '#^berlindb/#' )
 			  ->path( '#^monolog/#' )
 			  ->path( '#^opis/#' )
 			  ->path( '#^php-di/#' )
